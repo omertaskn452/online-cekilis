@@ -1,42 +1,69 @@
-import React from "react";
+import {useState} from "react";
 import "../style.css"
 
 const Giveaway = () => {
 
-  const [formData, setFormData] = React.useState({
-
+  const [formData, setFormData] = useState({
     giveawayName: "",
     numberOfWinner: "",
     numberOfSubs: "",
     textArea: ""
-
   })
+
+  const [winner, setWinner] = useState([])
 
   const handleChange = (event) => {
 
     const {name, value} = event.target
 
     setFormData(prevState => ({
-
         ...prevState,
         [name]: value
-
-
     }))
 
   }
 
-  const handleSubmit = (event) => {
-
-    event.preventDefault()
-    let listOfItems = []
-    listOfItems = formData.textArea
-    console.log(listOfItems)
-    console.log(listOfItems.length)
-    console.log(listOfItems[2])
-
+  const splitTextAreaValues = () => {
+    let splittedValues = formData.textArea.split("\n")
+    return splittedValues
   }
 
+  const generateRandomNumber = (min, max) => {
+    return Math.floor(Math.random()*(max - min + 1)) + min
+  }
+
+  const pickWinner = () => {
+
+    let winners =[];
+
+    if(formData.numberOfWinner <= 0){
+      alert("Kazanan sayısı 0 veya negatif olamaz")
+    }
+    else{
+      let listOfContent = splitTextAreaValues()
+      let winnerIndex;
+      for(let i=0;i<formData.numberOfWinner;i++){
+        //console.log(`list of content before picking winners ${listOfContent}`)
+        winnerIndex = generateRandomNumber(0, (listOfContent.length - 1))
+        //console.log(`winner index: ${winnerIndex}`)
+        winners.push(listOfContent[winnerIndex])
+        //console.log(`winners: ${winners}`)
+        listOfContent.splice(winnerIndex, 1)
+        //console.log(`list of content after removing: ${listOfContent}`)
+        //console.log("*-*-*-*-*-*-*-*-*-*")
+      }
+    }
+
+    return winners
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    let winnerOfGiveaway = pickWinner()
+    setWinner(prevState => winnerOfGiveaway)
+  }
+
+  const winnerElements = winner.map(item => <p>{item}</p>)
 
   return(
 
@@ -88,6 +115,10 @@ const Giveaway = () => {
                 </div>
                 <button className="form-button">KAZANANLARI BELİRLE</button>
               </form>
+              <div>
+                <h2>Kazananlar</h2>
+                {winnerElements}
+              </div>
         </div>
       </section>
 
