@@ -1,12 +1,10 @@
 import React from "react";
-import Giveaway from "./Cekilis";
+import Giveaway from "./Giveaway";
 import "../style.css"
 
 const Main = () => {
-
   return(
-
-      <main>
+      <section className="mainContent">
         <div className="container">
           <div className="main">
             <h1>Online Çekiliş Yapmanın En Basit Hali!</h1>
@@ -14,10 +12,7 @@ const Main = () => {
             <Giveaway/>
           </div>
         </div>
-      </main>
-
+      </section>
   )
-
 }
-
 export default Main

@@ -1,98 +1,78 @@
 *{
-
     box-sizing: border-box;
-
 }
 
 body{
-
     margin: 0px;
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-    margin-bottom: 500px;
+}
 
+a{
+    text-decoration: none;
+}
+
+.wrap{
+    min-height: 100vh;
 }
 
 header{
-
     background-color: #17e31c;
-
 }
 
 .container{
-
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .header{
-
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .header-logo-area{
-
     display: flex;
     flex-direction: row;
     align-items: center;
-
-
 }
 
 .header-logo{
-
     height: 50px;
-
 }
 
 .header-title, .header-contact{
-
     color: white;
-
 }
 
 .header-title{
-
     margin-left: 15px;
     font-size: 1.5rem;
-
 }
 
 .header-contact{
-
     margin-left: auto;
-
 }
 
 .main{
-
     text-align: center;
-
 }
 
 .giveaway{
-
     text-align: start;
     background-color: #eaebf0;
     padding: 5px 20px 20px 20px;
-
 }
 
 .textArea{
-
     overflow: hidden;
     resize: none;
     width: 100%;
     height: 250px;
     margin-bottom: 20px;
-
 }
 
 .grid-layout{
-
     display: grid;
     grid-template-columns: 48% 48%;
     justify-content: space-between;
@@ -101,30 +81,23 @@ header{
 }
 
 .form-item{
-
     display: flex;
     flex-direction: column;
-
 }
 
 .form-label{
-
     margin-bottom: 5px;
-
 }
 
 .form-input{
-
     height: 42px;
     border: none;
     border-radius: 5px;
     text-indent: 10px;
     font-size: 1.25rem;
-
 }
 
 .form-button{
-
     width: 100%;
     height: 42px;
     border: 1px solid white;
@@ -133,12 +106,60 @@ header{
     border-radius: 5px;
     font-size: 1.1rem;
     font-weight: bold;
-
 }
 
 button:active{
-
     transform: scale(0.99);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.4);
+}
 
+.popup-body{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.popup{
+    position: fixed;
+    opacity: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #eaebf0;
+    color: black;
+    font-size: 1.25rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,1);
+}
+
+
+.inactive{
+    visibility: hidden;
+}
+
+.active{
+    transition: 1s;
+    visibility: visible;
+}
+
+footer{
+    width: 100%;
+    background-color: #007e05;
+    color: #eaeaea;
+    margin-top: 20px;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 40px;
+}
+
+.footer-text{
+    margin: 0px;
 }
